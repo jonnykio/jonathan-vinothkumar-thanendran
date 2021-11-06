@@ -1,18 +1,27 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ProductCarousel />
+    <a class="cursor-pointer" @click="showProduct = true">View Product</a>
+    <Modal v-if="showProduct" @close="showProduct = false">
+      <h3 slot="header">Header for Product</h3>
+    </Modal>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Modal from '@/components/modal';
+import ProductCarousel from '@/components/product-carousel';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
-  }
+    ProductCarousel,
+    Modal,
+  },
+  data() {
+    return {
+      showProduct: false,
+    }
+  },
 }
 </script>
